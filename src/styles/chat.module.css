@@ -1,0 +1,206 @@
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    color: #090c0b;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #daadf1;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+.container{
+    display: grid;
+    grid-template-areas:
+    "users chat chat"
+    "users chat chat"
+    "users text text";
+    grid-gap: 10px;
+    grid-template-rows: 3fr 1fr;
+    grid-auto-columns: 1fr 2fr;
+    max-height: 600px;
+    min-height:600px;
+    max-width: 800px;
+    min-width: 800px;
+    overflow:hidden;
+    border:2px solid #343434;
+    border-radius: 10px;
+    margin-top: 25%;
+    background-color: #ecdff3;
+    font-family: Piazzolla ;
+}
+
+.usersArea {
+    grid-area: users;
+    margin:20px;
+    padding:5px;
+    border-radius: 10px;
+    resize: initial;
+    background-color: #f6f2f2;
+    border: 1px solid #343434;
+
+}
+.user{
+    box-shadow: 0px 0px 8px rgba(26, 9, 28, 0.5);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3px;
+}
+.me{
+    background-color:#e7f5d1 ;
+}
+.user span{
+    margin-right: auto;
+}
+.user img{
+    margin-right: auto;
+    width: 50px;
+    border-radius: 50%;
+}
+.usersArea h1{
+    text-align: center;
+}
+.usersArea ul{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    font-weight: bold;
+    overflow-y: scroll;
+    max-height: 420px;
+    min-height: 420px;
+    color: #070109;
+    font-weight: bold;
+    font-size: large;
+}
+
+.chatArea {
+    grid-area: chat;
+    margin:20px;
+    overflow-y: scroll;
+    border-radius: 10px;
+    background-color:#f6f2f2 ;
+    color: #090c0b;
+    border: 1px solid #343434;
+
+}
+.textArea{
+    display:grid;
+    grid-auto-columns: 2fr 1fr;
+    grid-template-areas:
+    "textarea buttons";
+    grid-area: text;
+    margin:20px;
+}
+
+.textarea {
+    width: 100%;
+    resize: none;
+    border-radius: 10px;
+    padding:5px;
+    overflow: hidden;
+    max-height:72px;
+    grid-area: textarea;
+    color: #090c0b;
+    background-color: #f6f2f2;
+    border-style: none;
+}
+.textarea:focus{
+    border-style: none;
+    outline: none;
+}
+.myMessage{
+    text-align:right;
+    background-color: #e7f5d1;
+    border-radius:10px;
+    margin:3px;
+    padding: 2px;
+    height:content-box;
+    width:content-box;
+    white-space: pre-line;
+    color: #090c0b;
+    display: grid;
+    grid-template-areas:
+            "time mess mess img "
+;
+    grid-gap: 3px;
+    grid-auto-columns: 1.5fr 7fr 1fr;
+}
+.name{
+    color: #070109;
+    font-weight: bold;
+    padding: 5px;
+    text-align: center;
+    margin-bottom: auto;
+}
+.mess{
+    grid-area: mess;
+    justify-content: right;
+    border-radius: 10px;
+    padding: 3px;
+    box-shadow: 0 0 5px rgba(26, 88, 9, 0.5);
+    color: #070109;
+    font-weight: 300;
+
+}
+.imgContainer{
+    grid-area: img;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 5px rgba(26, 88, 9, 0.5);
+    border-radius: 10px;
+    padding: 3px;
+
+}
+.img{
+    text-align: center;
+    border-radius: 40%;
+    height: max-content;
+    width:max-content;
+    max-height: 75px;
+    max-width: 75px;
+    margin-bottom: auto;
+}
+.time{
+    grid-area: time;
+    padding: 5px;
+    box-shadow: 0 0 5px rgba(26, 88, 9, 0.5);
+    border-radius: 10px;
+    color: #070109;
+    font-weight: bold;
+}
+
+.notMyMessage{
+    text-align:left;
+    background-color: #edd8f6;
+    margin:3px;
+    padding: 2px;
+    height:content-box;
+    width:content-box;
+    white-space: pre-line;
+    color: #090c0b;
+    display: grid;
+    grid-template-areas:
+            "img mess mess time "
+;
+    grid-gap: 3px;
+    grid-auto-columns: 1fr 7fr 1fr;
+}
+
+.button {
+    grid-area: buttons;
+    display:grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr ;
+    justify-self:flex-start;
+    width: 35%;
+    height:35%;
+
+}
