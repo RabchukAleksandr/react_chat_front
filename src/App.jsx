@@ -37,7 +37,7 @@ const App = () => {
             type: 'JOINED', joined: true, payload: obj
         })
 
-        axios.get(`https://hidden-peak-11463.herokuapp.com//rooms/${obj.roomID}`).then((res) => {
+        axios.get(`https://hidden-peak-11463.herokuapp.com/rooms/${obj.roomID}`).then((res) => {
             dispatch({
                 type: 'JOINED', joined: true, payload: obj
             })

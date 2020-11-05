@@ -96,6 +96,7 @@
     "textarea buttons";
     grid-area: text;
     margin:20px;
+    grid-gap: 5px;
 }
 
 .textarea {
