@@ -22,10 +22,8 @@
     grid-gap: 10px;
     grid-template-rows: 3fr 1fr;
     grid-auto-columns: 1fr 2fr;
-    max-height: 600px;
-    min-height:600px;
-    max-width: 800px;
-    min-width: 800px;
+    height: 600px;
+    width: 800px;
     overflow:hidden;
     border:2px solid #343434;
     border-radius: 10px;
@@ -96,7 +94,7 @@
     "textarea buttons";
     grid-area: text;
     margin:20px;
-    grid-gap: 5px;
+    grid-gap: 10px;
 }
 
 .textarea {
@@ -203,5 +201,33 @@
     justify-self:flex-start;
     width: 35%;
     height:35%;
+
+}
+@media  only screen and (max-width: 800px) {
+    .container{
+        width: 600px;
+        height: 400px;
+    }
+    .img{
+        height: 50px;
+        width: 50px;
+    }
+    .user img{
+        width: 35px;
+    }
+
+}
+
+@media  only screen and (max-width: 500px) {
+    .container{
+        width: 400px;
+        height: 250px;
+    }
+    .img{
+        height: 30px;
+    }
+    .user img{
+        width: 20px;
+    }
 
 }
