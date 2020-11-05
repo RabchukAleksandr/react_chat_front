@@ -1,3 +1,3 @@
 const io = require('socket.io-client')
 
-export const socket = io.connect('http://localhost:8080/')
+export const socket = io.connect('https://hidden-peak-11463.herokuapp.com/')
