@@ -28,35 +28,55 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.secondary.main,
     },
     addImg: {
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        alignSelf: "center",
-        marginLeft: "43%"
+        margin: theme.spacing(1, 0, 1),
+        backgroundColor:'#73FAA5',
+        color:'#000000',
+        '&:hover': {
+            backgroundColor:'#00FAA5'
+        },
     },
     form: {
         width: '100%',
         marginTop: theme.spacing(1),
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: "center"
     },
     submit: {
         margin: theme.spacing(1, 0, 1),
+        backgroundColor:'#73FAA5',
+        color:'#000000',
+        '&:hover': {
+            backgroundColor:'#00FAA5'
+        },
     },
+    error: {
+        border:'solid 2px rgb(255,0,0,0.4)',
+        color:'rgba(34,32,32,0.8)',
+        fontWeight:"bold",
+        borderRadius:'4px',
+        padding:'3px',
+        backgroundColor:"rgb(255,183,2,0.3)"
+    },
+
 }));
 
 const RoomEnterSchema = Yup.object().shape({
     roomID: Yup.string()
-        .required('Required').max(10, "Maximum 10 symbols"),
+        .required('Room ID is required').max(8, "Maximum 8 symbols"),
     userName: Yup.string()
-        .required('Required').max(10, "Maximum 10 symbols"),
-
+        .required('User name is required').max(8, "Maximum 8 symbols"),
+    file:Yup.mixed().required('An image is required')
 });
 
 const Login = ({onLogin}) => {
     const classes = useStyles();
 
+
     const hiddenFileInput = React.useRef(null);
-    const [fileData, setFileData] = React.useState(null)
-    const [imageLocation, setImageLocation] = React.useState("")
+    const [fileData, setFileData] = React.useState("")
+    const [imageLocation, setImageLocation] = React.useState(false)
     const [showModal, setShowModal] = React.useState(false)
     const handleClick = event => {
         hiddenFileInput.current.click();
@@ -82,7 +102,7 @@ const Login = ({onLogin}) => {
         <>
             {fileData && <ImageCropper passCroppedImage={passCroppedImage} imageData={fileData} show={showModal}
                                        onHide={() => setShowModal(false)} clearFileData={clearFileData}/>}
-            <Formik initialValues={{roomID: "", userName: "", file: null}}
+            <Formik initialValues={{roomID: "", userName: "", file: ""}}
                     validationSchema={RoomEnterSchema}
                     onSubmit={async (values, {setSubmitting, resetForm}) => {
                         setSubmitting(true);
@@ -99,7 +119,6 @@ const Login = ({onLogin}) => {
                     <Container component="main" maxWidth="xs">
                         <CssBaseline/>
                         <div className={classes.paper}>
-
                             <Typography component="h1" variant="h5">
                                 Enter Chat
                             </Typography>
@@ -107,45 +126,51 @@ const Login = ({onLogin}) => {
                                 <TextField
                                     value={values.roomID}
                                     onChange={handleChange}
+                                    onBlur={handleBlur}
                                     variant="outlined"
                                     margin="normal"
-                                    required
                                     fullWidth
-                                    maxLength={10}
                                     type="text"
                                     label="Room ID"
                                     name="roomID"
-                                    autoComplete=""
-                                    autoFocus
-                                />
 
+                                />
+                                {errors.roomID && touched.roomID? (
+                                    <div className={classes.error}>{errors.roomID }</div>
+                                ) : null}
                                 <TextField
                                     value={values.userName}
                                     onChange={handleChange}
                                     variant="outlined"
+                                    onBlur={handleBlur}
                                     margin="normal"
-                                    required
-
                                     fullWidth
                                     name="userName"
                                     label="User Name"
                                     type="text"
                                     autoComplete=""
-                                />
 
+                                />
+                                {errors.userName && touched.userName ? (
+                                    <div  className={classes.error}>{errors.userName}</div>
+                                ) : null}
                                 <input
                                     type="file"
                                     name="file"
                                     id="file"
+                                    onBlur={handleBlur}
                                     ref={hiddenFileInput}
                                     onChange={(event) => {
                                         setFileData({
                                             file: URL.createObjectURL(event.target.files[0])
                                         })
+                                        setFieldValue('file',event.target.files[0])
                                         setShowModal(true)
                                     }}
                                     hidden
+
                                 />
+
                                 {!imageLocation ?
                                     <Tooltip title="Add profile photo" arrow placement="right">
                                         <Fab className={classes.addImg} color="primary" aria-label="add"
@@ -159,14 +184,16 @@ const Login = ({onLogin}) => {
                                             <CheckCircleIcon/>
                                         </Fab>
                                     </Tooltip>
-
                                 }
+                                {errors.file && touched.file ? (
+                                    <div  className={classes.error}>An image is required</div>
+                                ) : null}
                                 <Button
                                     type="submit"
-                                    fullWidth
                                     variant="contained"
                                     color="primary"
                                     className={classes.submit}
+                                    disabled={!imageLocation}
                                 >
                                     GO
                                 </Button>

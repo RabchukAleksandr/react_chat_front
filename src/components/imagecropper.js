@@ -120,14 +120,10 @@ class ImageCropper extends React.Component {
                         maxHeight={200}
                     />
                 )}</div>
-                <div>
-                    {croppedImageUrl && (
-                    <img className={classes.imagePreview} alt="Crop" src={croppedImageUrl} />
-                )}</div>
+
                     <div>
                         <Button  variant="contained"
                                  disabled={!croppedImageUrl}
-                                 style={{background:"#daadf1"}}
                                  size="small"
                                  startIcon={<Save/>}
                                  onClick={()=>{

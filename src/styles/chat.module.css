@@ -1,7 +1,9 @@
 ::-webkit-scrollbar {
-    width: 12px;
+    width: 0px;
 }
-
+::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.9);
+}
 ::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     color: #090c0b;
@@ -13,221 +15,265 @@
     background-color: #daadf1;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
 }
+
 .container{
+    background: white;
+    height: 80vh;
+    width: 60vw;
+    background: linear-gradient(to right bottom, rgba(255,255,255,0.7),rgba(255,255,255,0.3));
+    border-radius: 2rem;
+    font-family: 'Fira Sans', sans-serif;
+    z-index: 2;
+    backdrop-filter: blur(2rem);
     display: grid;
     grid-template-areas:
     "users chat chat"
     "users chat chat"
     "users text text";
-    grid-gap: 10px;
     grid-template-rows: 3fr 1fr;
-    grid-auto-columns: 1fr 2fr;
-    height: 600px;
-    width: 800px;
+    grid-auto-columns: 3fr 5fr;
     overflow:hidden;
-    border:2px solid #343434;
-    border-radius: 10px;
-    margin-top: 25%;
-    background-color: #ecdff3;
-    font-family: Piazzolla ;
 }
-
-.usersArea {
-    grid-area: users;
-    margin:20px;
-    padding:5px;
-    border-radius: 10px;
-    resize: initial;
-    background-color: #f6f2f2;
-    border: 1px solid #343434;
-
-}
-.user{
-    box-shadow: 0px 0px 8px rgba(26, 9, 28, 0.5);
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 3px;
-}
-.me{
-    background-color:#e7f5d1 ;
-}
-.user span{
-    margin-right: auto;
-}
-.user img{
-    margin-right: auto;
-    width: 50px;
+.circle1,
+.circle2{
+    background: linear-gradient(to right bottom, rgba(255,255,255,0.8),rgba(255,255,255,0.4));
+    position: absolute;
+    height: 15rem;
+    width: 15rem;
     border-radius: 50%;
 }
-.usersArea h1{
-    text-align: center;
+.circle1{
+    top:5%;
+    right: 15%;
 }
+.circle2{
+    bottom:5%;
+    left: 10%;
+}
+.usersArea {
+    grid-area: users;
+    background: linear-gradient(to right bottom, rgba(255,255,255,0.8),rgba(255,255,255,0.4));
+    display: grid;
+    grid-template-rows: 2fr 5fr;
+
+    /*resize: initial;*/
+
+    /*overflow-y: scroll;*/
+}
+.room{
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.room img{
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+}
+.users {
+    display: grid;
+    grid-template-rows: repeat(6,1fr);
+    overflow-y:hidden ;
+
+}
+.online{
+    font-weight: 500;
+    font-size:small;
+    color: #0c0c0c;
+    text-transform: inherit;
+}
+
+.user{
+    display: flex;
+    align-items: center;
+
+}
+.user span{
+    font-weight: bolder;
+    font-size: medium;
+    margin-left: 10px;
+}
+.user img{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    margin-left: 10px;
+
+}
+
+.me{
+    background: linear-gradient(to right bottom, rgba(97, 229, 103,0.5), rgb(89, 241, 167));
+
+}
+
 .usersArea ul{
     list-style: none;
-    margin: 0px;
-    padding: 0px;
-    font-weight: bold;
-    overflow-y: scroll;
-    max-height: 420px;
-    min-height: 420px;
-    color: #070109;
-    font-weight: bold;
-    font-size: large;
 }
 
 .chatArea {
     grid-area: chat;
-    margin:20px;
-    overflow-y: scroll;
-    border-radius: 10px;
-    background-color:#f6f2f2 ;
-    color: #090c0b;
-    border: 1px solid #343434;
+    display: grid;
+    grid-template-rows: repeat(6,1fr);
+    resize: none;
+    overflow: auto;
+    padding: 0.5rem;
+
 
 }
+.massageArea{
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.notMyMassageArea{
+    display:flex;
+    flex-direction: column;
+}
+.chatArea img{
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    margin-left: 0.2rem;
+    margin-right: 0.2rem;
+}
 .textArea{
-    display:grid;
-    grid-auto-columns: 2fr 1fr;
-    grid-template-areas:
-    "textarea buttons";
     grid-area: text;
-    margin:20px;
-    grid-gap: 10px;
+    border-top: 2px solid #98f2f3;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .textarea {
-    width: 100%;
+    width: 80%;
+    min-height: 3rem;
+    max-height: 3rem;
+    border-radius: 99999px;
     resize: none;
-    border-radius: 10px;
-    padding:5px;
-    overflow: hidden;
-    max-height:72px;
-    grid-area: textarea;
-    color: #090c0b;
-    background-color: #f6f2f2;
+    background: linear-gradient(to right bottom, rgba(255,255,255,0.8),rgba(255,255,255,0.4));
+    padding: 1rem;
+    overflow: -moz-scrollbars-horizontal;
     border-style: none;
+    margin:10px ;
 }
 .textarea:focus{
     border-style: none;
     outline: none;
 }
 .myMessage{
-    text-align:right;
-    background-color: #e7f5d1;
-    border-radius:10px;
-    margin:3px;
-    padding: 2px;
-    height:content-box;
-    width:content-box;
-    white-space: pre-line;
-    color: #090c0b;
-    display: grid;
-    grid-template-areas:
-            "time mess mess img "
-;
-    grid-gap: 3px;
-    grid-auto-columns: 1.5fr 7fr 1fr;
+    display: flex;
+    justify-content: flex-end;
+    align-items:center;
+    text-align: end;
+    line-break:anywhere;
 }
+.myMessage * {
+    margin-bottom: 0.2rem;
+
+}
+.myMessage div{
+    display: flex;
+    align-self: flex-end;
+    text-align: right;
+    background: linear-gradient(to right bottom, rgba(97, 229, 103,0.5), rgb(89, 241, 167));
+    width: content-box;
+    height: content-box;
+    padding: 0.4rem;
+    border-radius: 20px;
+    white-space: pre-line;
+    justify-content: center;
+    align-items: center;
+    line-break: anywhere;
+}
+.notMyMessage * {
+    margin-bottom: 0.2rem;
+}
+.notMyMessage div{
+    display: flex;
+    align-self: flex-start;
+    text-align: left;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right bottom, rgba(255,255,255,0.4),rgba(255,255,255,0.4));
+    width: content-box;
+    height: content-box;
+    padding: 0.4rem;
+    border-radius: 20px;
+    white-space: pre-line;
+    line-break: anywhere;
+}
+
 .name{
     color: #070109;
     font-weight: bold;
-    padding: 5px;
-    text-align: center;
-    margin-bottom: auto;
+    font-size: medium;
+
 }
 .mess{
-    grid-area: mess;
-    justify-content: right;
-    border-radius: 10px;
-    padding: 3px;
-    box-shadow: 0 0 5px rgba(26, 88, 9, 0.5);
-    color: #070109;
-    font-weight: 300;
 
 }
-.imgContainer{
-    grid-area: img;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 0 5px rgba(26, 88, 9, 0.5);
-    border-radius: 10px;
-    padding: 3px;
 
-}
-.img{
-    text-align: center;
-    border-radius: 40%;
-    height: max-content;
-    width:max-content;
-    max-height: 75px;
-    max-width: 75px;
-    margin-bottom: auto;
-}
 .time{
-    grid-area: time;
-    padding: 5px;
-    box-shadow: 0 0 5px rgba(26, 88, 9, 0.5);
-    border-radius: 10px;
-    color: #070109;
-    font-weight: bold;
+    font-size: 0.6rem;
 }
 
 .notMyMessage{
-    text-align:left;
-    background-color: #edd8f6;
-    margin:3px;
-    padding: 2px;
-    height:content-box;
-    width:content-box;
-    white-space: pre-line;
-    color: #090c0b;
-    display: grid;
-    grid-template-areas:
-            "img mess mess time "
-;
-    grid-gap: 3px;
-    grid-auto-columns: 1fr 7fr 1fr;
+    display: flex;
+    justify-content: flex-end;
+    align-items:center;
+    text-align: left;
+    flex-direction: row-reverse;
 }
 
-.button {
-    grid-area: buttons;
-    display:grid;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr ;
-    justify-self:flex-start;
-    width: 35%;
-    height:35%;
-
+button{
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 3px;
+    border-radius: 50%;
+    background: linear-gradient(to right bottom, rgba(97, 229, 103,0.5), rgb(89, 241, 167));
+    color: #0c0c0c;
 }
-@media  only screen and (max-width: 800px) {
-    .container{
-        width: 600px;
-        height: 400px;
-    }
-    .img{
-        height: 50px;
-        width: 50px;
-    }
-    .user img{
-        width: 35px;
-    }
-
+button:focus{
+    outline:none;
 }
-
-@media  only screen and (max-width: 500px) {
-    .container{
-        width: 400px;
-        height: 250px;
-    }
-    .img{
-        height: 30px;
-    }
-    .user img{
-        width: 20px;
-    }
-
+.textarea::placeholder {
+    color: #0c0c0c;
+    font-family: 'Fira Sans', sans-serif;
 }
+/*@media  only screen and (max-width: 800px) {*/
+/*    .container{*/
+/*        width: 600px;*/
+/*        height: 400px;*/
+/*    }*/
+/*    .img{*/
+/*        height: 50px;*/
+/*        width: 50px;*/
+/*    }*/
+/*    .user img{*/
+/*        width: 35px;*/
+/*    }*/
+
+/*}*/
+
+/*@media  only screen and (max-width: 500px) {*/
+/*    .container{*/
+/*        width: 400px;*/
+/*        height: 250px;*/
+/*    }*/
+/*    .img{*/
+/*        height: 30px;*/
+/*    }*/
+/*    .user img{*/
+/*        width: 20px;*/
+/*    }*/
+
+/*}*/
