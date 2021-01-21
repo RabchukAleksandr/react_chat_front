@@ -123,8 +123,6 @@
     resize: none;
     overflow: auto;
     padding: 0.5rem;
-
-
 }
 .massageArea{
     display:flex;
@@ -171,6 +169,7 @@
     align-items:center;
     text-align: end;
     line-break:anywhere;
+    min-height: 92px;
 }
 .myMessage * {
     margin-bottom: 0.2rem;
@@ -228,6 +227,7 @@
     align-items:center;
     text-align: left;
     flex-direction: row-reverse;
+    min-height: 92px;
 }
 
 button{
